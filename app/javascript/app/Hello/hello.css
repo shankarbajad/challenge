@@ -1,0 +1,12 @@
+.hello {
+  color: red;
+}
+
+.notification-msg{
+	position: fixed;
+    right: 0;
+}
+
+.mr-20{
+	margin-top: 20px;
+}
