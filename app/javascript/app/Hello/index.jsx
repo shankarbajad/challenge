@@ -9,6 +9,7 @@ export default function Hello() {
 		storeImageList: []
 	})
 
+
 	useEffect(()=>{
 		getImageList()
 	},[])
@@ -16,7 +17,7 @@ export default function Hello() {
 	// This method for get image list from the localstorage
 	const getImageList = () => {
 		if(localStorage.getItem('storeImageList')){
-			var storeImageList = JSON.parse(localStorage.getItem('storeImageList'));
+			const storeImageList = JSON.parse(localStorage.getItem('storeImageList'));
 			setState({
 				...state,
 				storeImageList
@@ -27,12 +28,12 @@ export default function Hello() {
 
 	// This method for upload image from the browse button
 	const handeUploadImage = (file) => {
-        var imageList = state.imageList;
-        var files = file.target.files;
+        const imageList = state.imageList;
+        const files = file.target.files;
 
         for(let i in files){
-            let reader = new FileReader();
-            let file = files[i];
+            const reader = new FileReader();
+            const file = files[i];
             reader.onloadend = () => {
                 var img = new Image();
                 var _URL = window.URL || window.webkitURL;
@@ -72,7 +73,7 @@ export default function Hello() {
     const saveImages = (e) => {
     	e.preventDefault();
     	var storeImageList = state.storeImageList;
-    	var imageList = state.imageList;
+    	const imageList = state.imageList;
     	if(imageList.length===0){
     		alert('No Images selected')
     		return null
@@ -99,15 +100,15 @@ export default function Hello() {
     		return null
     	}
 
-    	var storeImageList = state.storeImageList;
+    	const storeImageList = state.storeImageList;
     	storeImageList.splice(index, 1)
+    	
     	setState({
     		...state,
     		storeImageList,
     		notification: 'Image deleted successfully !'
     	})
-
-    	localStorage.setItem('storeImageList', JSON.stringify(state.imageList))
+    	localStorage.setItem('storeImageList', JSON.stringify(state.storeImageList))
     }
 
 
